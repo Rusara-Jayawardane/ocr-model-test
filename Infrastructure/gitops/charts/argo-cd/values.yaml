@@ -1,4 +1,12 @@
 argo-cd:
+  # global:
+    # imagePullSecrets:
+    # - name: docker-cfg
+    # tolerations:
+    # - key: node_group
+    #   operator: Equal
+    #   value: ops
+    #   effect: NoSchedule
   configs:
     cm:
       application.resourceTrackingMethod: annotation
@@ -7,29 +15,50 @@ argo-cd:
   notifications:
     resources:
       requests:
-        cpu: 50m
+        cpu: 20m
         memory: 64Mi
+    pdb:
+      enabled: true
+      minAvailable: 50%
   controller:
     resources:
       requests:
-        cpu: 50m
-        memory: 300Mi
+        cpu: 20m
+        memory: 64Mi
+    # topologySpreadConstraints:
+    # - maxSkew: 1
+    #   topologyKey: topology.kubernetes.io/zone
+    #   whenUnsatisfiable: ScheduleAnyway
+    # - maxSkew: 1
+    #   topologyKey: kubernetes.io/hostname
+    #   whenUnsatisfiable: DoNotSchedule
     replicas: 1
     pdb:
       enabled: true
       minAvailable: 50%
   server:
+    # topologySpreadConstraints:
+    # - maxSkew: 1
+    #   topologyKey: topology.kubernetes.io/zone
+    #   whenUnsatisfiable: ScheduleAnyway
+    # - maxSkew: 1
+    #   topologyKey: kubernetes.io/hostname
+    #   whenUnsatisfiable: DoNotSchedule
     pdb:
       enabled: true
       minAvailable: 50%
+    # ingress:
+    #   ingressClassName: internal
+    #   enabled: true
+    #   extraTls:
+    #   - secretName: argo-cd-tls
+    #     hosts:
+    #     - argo-cd.ops.test.<hosted-zone>
+    #   hostname: argo-cd.ops.test.<hosted-zone>
     resources:
-      limits:
-        cpu: 500m
-        memory: 512Mi
       requests:
-        cpu: 200m
-        memory: 256Mi
-        ephemeral-storage: 15Mi
+        cpu: 20m
+        memory: 64Mi
     replicas: 1
   redis-ha:
     podDisruptionBudget:
@@ -39,18 +68,32 @@ argo-cd:
         minAvailable: 50%
 
   repoServer:
-    replicas: 1
+    # topologySpreadConstraints:
+    # - maxSkew: 1
+    #   topologyKey: topology.kubernetes.io/zone
+    #   whenUnsatisfiable: ScheduleAnyway
+    # - maxSkew: 1
+    #   topologyKey: kubernetes.io/hostname
+    #   whenUnsatisfiable: DoNotSchedule
+    replicas: 1 # increase replicas to be more than 1 if deployed in prod
     pdb:
       enabled: true
       minAvailable: 50%
     resources:
       requests:
-        cpu: 500m
-        memory: 512Mi
+        cpu: 20m
+        memory: 64Mi
   applicationSet:
+    # topologySpreadConstraints:
+    # - maxSkew: 1
+    #   topologyKey: topology.kubernetes.io/zone
+    #   whenUnsatisfiable: ScheduleAnyway
+    # - maxSkew: 1
+    #   topologyKey: kubernetes.io/hostname
+    #   whenUnsatisfiable: DoNotSchedule
     resources:
       requests:
-        cpu: 50m
+        cpu: 20m
         memory: 64Mi
     replicaCount: 1
     pdb:
@@ -59,5 +102,5 @@ argo-cd:
   redis:
     resources:
       requests:
-        cpu: 50m
+        cpu: 20m
         memory: 64Mi
