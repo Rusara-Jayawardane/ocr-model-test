@@ -9,7 +9,7 @@ spec:
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: argo-cd
-  project: paastry
+  project: devops-test
   source:
     path: "{{ .Values.spec.source.path }}/charts/argo-cd"
     repoURL: {{ .Values.spec.source.repoURL }}

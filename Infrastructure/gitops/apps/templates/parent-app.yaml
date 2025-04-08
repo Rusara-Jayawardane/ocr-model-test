@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: {{ .Values.spec.destination.server }}
-    namespace: parent
+    namespace: argo-cd
   project: devops-test
   source:
     path: "{{ .Values.spec.source.path }}/apps/"
