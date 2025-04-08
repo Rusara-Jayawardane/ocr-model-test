@@ -1,0 +1,9 @@
+spec:
+  destination:
+    server: "https://kubernetes.default.svc"
+  source:
+    path: Infrastructure/gitops
+    repoURL: "https://github.com/Rusara-Jayawardane/ocr-model-test.git"
+    targetRevision: main
+metadata:
+  namespace: argo-cd

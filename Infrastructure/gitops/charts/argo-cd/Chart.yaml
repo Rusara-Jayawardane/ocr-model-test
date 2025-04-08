@@ -1,0 +1,11 @@
+apiVersion: v2
+name: my-argocd-wrapper
+description: A Helm chart that deploys Argo CD using the Bitnami Helm chart as a dependency
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+
+dependencies:
+  - name: argo-cd
+    version: 7.3.10
+    repository: https://argoproj.github.io/argo-helm
