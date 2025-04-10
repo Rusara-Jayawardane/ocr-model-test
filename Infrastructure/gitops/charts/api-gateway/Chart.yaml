@@ -1,0 +1,11 @@
+apiVersion: v2
+name: api-gateway
+description: common Helm chart for service deployments
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+
+dependencies:
+  - name: service-common-chart
+    version: 0.1.0
+    repository: oci://docker.io/roodocker7298
