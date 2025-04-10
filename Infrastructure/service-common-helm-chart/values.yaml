@@ -1,0 +1,16 @@
+name: api-gateway
+replicaCount: 1
+
+image:
+  repository: roodocker7298/ocr-test
+  tag: v1
+
+containerPort: 8001
+
+env:
+  - name: KSERVE_URL
+    value: "http://model-service.default.svc.cluster.local/v2/models/ocr-model/infer"
+
+service:
+  port: 8080
+  type: ClusterIP
