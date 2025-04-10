@@ -1,0 +1,13 @@
+service-common-chart:
+  name: model-server
+  replicaCount: 1
+
+  image:
+    repository: roodocker7298/service
+    tag: v1
+
+  containerPort: 8080
+
+  service:
+    port: 80
+    type: ClusterIP
