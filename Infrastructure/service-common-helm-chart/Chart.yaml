@@ -1,0 +1,5 @@
+apiVersion: v2
+name: service-common-chart
+description: common Helm chart for service deployments
+version: 0.1.0
+appVersion: "1.0"
