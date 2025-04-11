@@ -10,7 +10,7 @@ service-common-chart:
 
   env:
     - name: KSERVE_URL
-      value: "http://model-server.default.svc.cluster.local/v2/models/ocr-model/infer"
+      value: "http://model-server.model-server.svc.cluster.local/v2/models/ocr-model/infer"
 
   service:
     port: 8080
