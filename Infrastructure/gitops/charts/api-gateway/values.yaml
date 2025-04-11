@@ -13,5 +13,6 @@ service-common-chart:
       value: "http://model-server.model-server.svc.cluster.local/v2/models/ocr-model/infer"
 
   service:
+    portName: http
     port: 8080
     type: ClusterIP
