@@ -10,4 +10,5 @@ service-common-chart:
 
   service:
     port: 80
+    portName: http
     type: ClusterIP
