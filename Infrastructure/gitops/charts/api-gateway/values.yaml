@@ -3,8 +3,8 @@ service-common-chart:
   replicaCount: 1
 
   image:
-    repository: roodocker7298/ocr-test
-    tag: v1
+    repository: roodocker7298/api-gateway
+    tag: 5c0d663
 
   containerPort: 8001
 
