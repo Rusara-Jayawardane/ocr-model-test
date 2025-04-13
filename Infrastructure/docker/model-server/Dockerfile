@@ -1,7 +1,6 @@
 FROM python:3.11-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    POETRY_VERSION=1.8.2
+ENV POETRY_VERSION=2.1.2
 
 RUN apt-get update && apt-get install -y \
     curl \
@@ -10,18 +9,15 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
-    libxext6 \
-    && rm -rf /var/lib/apt/lists/*
+    libxext6 && curl -sSL https://install.python-poetry.org | python3 - && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH="/root/.local/bin:$PATH"
 
 WORKDIR /app
-
 COPY model.py pyproject.toml poetry.lock /app/
 
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi
+    && poetry install --no-root
 
 EXPOSE 8080
 

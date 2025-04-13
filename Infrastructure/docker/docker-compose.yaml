@@ -1,0 +1,28 @@
+services:
+  api-gateway:
+    build:
+      context: ../../.
+      dockerfile: Infrastructure/docker/api-gateway/Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8001:8001"
+    depends_on:
+      - model-server
+    networks:
+      - shared-network
+    environment:
+      - KSERVE_URL=http://model-server:8080/v2/models/ocr-model/infer
+
+  model-server:
+    build:
+      context: ../../.
+      dockerfile: Infrastructure/docker/model-server/Dockerfile
+    container_name: model-server
+    ports:
+      - "8080:8080"
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    driver: bridge
