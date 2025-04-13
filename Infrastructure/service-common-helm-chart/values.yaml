@@ -13,4 +13,5 @@ env:
 
 service:
   port: 8080
+  portName: http
   type: ClusterIP
