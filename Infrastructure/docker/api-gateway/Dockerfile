@@ -5,13 +5,7 @@ ENV POETRY_VERSION=2.1.2
 RUN apk update && apk upgrade && apk add --no-cache \
     curl \
     build-base \
-    tesseract-ocr \
     linux-headers \
-    glib \
-    libsm \
-    libxrender \
-    libxext \
-    libx11 \
     && curl -sSL https://install.python-poetry.org | python3 -
 
 ENV PATH="/root/.local/bin:$PATH"
