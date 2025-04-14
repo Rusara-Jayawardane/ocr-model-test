@@ -4,7 +4,7 @@ service-common-chart:
 
   image:
     repository: roodocker7298/model-server
-    tag: "3133519"
+    tag: "81c8b60"
 
   containerPort: 8080
 
