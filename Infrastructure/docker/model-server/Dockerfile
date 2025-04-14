@@ -1,20 +1,23 @@
-FROM python:3.11-slim
+FROM python:3.11-alpine
 
 ENV POETRY_VERSION=2.1.2
 
-RUN apt-get update && apt-get install -y \
+RUN apk update && apk upgrade && apk add --no-cache \
     curl \
-    build-essential \
+    build-base \
     tesseract-ocr \
-    libglib2.0-0 \
-    libsm6 \
-    libxrender1 \
-    libxext6 && curl -sSL https://install.python-poetry.org | python3 - && rm -rf /var/lib/apt/lists/*
+    linux-headers \
+    glib \
+    libsm \
+    libxrender \
+    libxext \
+    libx11 \
+    && curl -sSL https://install.python-poetry.org | python3 -
 
 ENV PATH="/root/.local/bin:$PATH"
 
 WORKDIR /app
-COPY model.py pyproject.toml poetry.lock /app/
+COPY model.py pyproject.toml /app/
 
 RUN poetry config virtualenvs.create false \
     && poetry install --no-root
