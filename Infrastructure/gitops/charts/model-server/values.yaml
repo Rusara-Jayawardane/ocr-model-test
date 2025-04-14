@@ -3,7 +3,7 @@ service-common-chart:
   replicaCount: 1
 
   image:
-    repository: roodocker7298/model-service
+    repository: roodocker7298/model-server
     tag: "3133519"
 
   containerPort: 8080
