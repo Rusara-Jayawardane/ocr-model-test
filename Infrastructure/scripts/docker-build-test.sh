@@ -2,8 +2,7 @@
 set -euo pipefail
 
 services=("api-gateway" "model-server")
-custom_image_registry="$1"
-image_registry="${custom_image_registry:-roodocker7298}"
+image_registry="$1"
 git_sha="$(git rev-parse --short HEAD)"
 
 cd "$(dirname "$0")/../.."
