@@ -38,6 +38,7 @@ Also this script deploys containers using docker-compose and runs a test which u
 
 # Application Deployment
 
+This repository is used as the source of truth for gitops.
 ArgoCD apps of apps deployment pattern is used to deploy the api-gateway, model-server and the infrastructure level services ( argocd, prometheus and grafana ). ArgoCD parent application configurations are in Infrastructure/gitops/apps path and Infrastructure/gitops/apps/templates directory includes the argocd child applications.
 
 ## Deployment Steps
