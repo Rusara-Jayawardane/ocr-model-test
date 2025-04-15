@@ -28,11 +28,13 @@
 ## Infrastructure/scripts/argocd-bootstrap.sh
 
 This script is used to deploy argocd as a helm release, create argocd parent application and argocd project.
+The argoCD parent application that gets deployed will deploy the child applications. (api-gateway, model-server, prometheus, grafana etc.) 
 
 ## Infrastructure/scripts/docker-build-test.sh
 
 This script is used to build the docker images for both api-gateway, model-server and push the images to a private dockerhub repository.
-Also this script deploys containers using docker-compose and run tests.
+This script expects the dockerhub repository name as the first argument.
+Also this script deploys containers using docker-compose and runs a test which upload a test image to the application and check the response.
 
 # Application Deployment
 
